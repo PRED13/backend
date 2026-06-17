@@ -1,13 +1,13 @@
-# Dockerfile
 FROM php:8.2-apache
 
-# Habilitar mod_rewrite para rutas amigables
-RUN a2enmod rewrite
+# Instalar extensiones y certificados SSL necesarios para Aiven
+RUN apt-get update && apt-get install -y \
+    libpng-dev \
+    ca-certificates \
+    && update-ca-certificates \
+    && docker-php-ext-install pdo pdo_mysql
 
-# Instalar extensiones de base de datos
-RUN docker-php-ext-install pdo pdo_mysql
-
-# Copiar el código fuente al directorio del servidor web
+# Copiar todo el contenido de la carpeta actual al directorio web de Apache
 COPY . /var/www/html/
 
 # Asegurar permisos correctos
