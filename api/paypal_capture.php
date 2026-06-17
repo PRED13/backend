@@ -1,7 +1,7 @@
 <?php
 
 header('Content-Type: application/json');
-require_once '../config/db.php';
+require_once __DIR__ . '/../config/db.php';
 
 $clientId = "ATuHDcR3OTiKtFh-AHWJywX3v0ag_QOqsj-67e_yv7pIN1ebegibXbJ6V_vnajrjZdWRGFCbjfCI5W5L";
 $secret = "ECrsf2ssFdlRPpeggMBfn9xREUFKGFi0DaWeD0k57A1mX4BWihxVeM3CuBRWhfiYXVZGxTNqxUT5j0IY";
