@@ -8,7 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     http_response_code(200);
     exit();
 }
-require_once __DIR__ . '/../config/db.php';
+// Cambia la línea problemática por esta:
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $user_id = isset($_GET['user_id']) ? intval($_GET['user_id']) : null;

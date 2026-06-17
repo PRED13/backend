@@ -10,7 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit();
 }
 
-require_once __DIR__ . '/../config/db.php';
+// Cambia la línea problemática por esta:
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/db.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 $input = json_decode(file_get_contents('php://input'), true) ?: [];
