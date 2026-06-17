@@ -13,6 +13,9 @@ switch ($request) {
     case '/api/auth':
         require 'api/auth.php';
         break;
+    case '/api/folders':
+        require 'api/folders.php';
+        break;
     default:
         http_response_code(404);
         echo json_encode(["message" => "Ruta no encontrada"]);
