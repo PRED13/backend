@@ -1,14 +1,13 @@
 FROM php:8.2-apache
 
-# Instalar extensiones y certificados SSL necesarios para Aiven
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    ca-certificates \
+# Instalar dependencias y activar el módulo de reescritura de Apache
+RUN apt-get update && apt-get install -y ca-certificates \
     && update-ca-certificates \
-    && docker-php-ext-install pdo pdo_mysql
+    && docker-php-ext-install pdo pdo_mysql \
+    && a2enmod rewrite
 
-# Copiar todo el contenido de la carpeta actual al directorio web de Apache
+# Copiar archivos
 COPY . /var/www/html/
 
-# Asegurar permisos correctos
+# Asegurar permisos
 RUN chown -R www-data:www-data /var/www/html
